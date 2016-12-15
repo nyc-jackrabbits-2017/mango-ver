@@ -1,12 +1,13 @@
 
-<h3><% @question.title %></h3>
-<h3>Asked by:<% @question.user.username %></h3>
-<p><% @question.description %></p>
+<h3><%= @question.title %></h3>
+<h4>Asked by:<%= @question.user.username %></h4>
+<p><%= @question.description %></p>
+
 <ul>
-  <a href="/questions/<%=@question.id%>"/edit>Edit Question</a>
+  <a href="/questions/<%=@question.id%>/edit">Edit Question</a>
   <form method="post" action="/questions/<%=@question.id%>">
     <input type="hidden" name="_method" value="delete">
-    <input type="submit" value="Logout" style="background:none;border:0;color:black">
+    <input type="submit" value="Delete">
   </form>
 </ul>
 

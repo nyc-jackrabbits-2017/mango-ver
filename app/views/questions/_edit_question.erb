@@ -1,7 +1,13 @@
 <div class="container">
-<form method="post" action="questions">
-  <input type ="text" name="question[title]" placeholder="@question.title">
-  <input type ="text" name="question[description]" placeholder="@question.description">
+<form method="post" action="/questions/<%=@question.id%>">
+  <input type="hidden" name="_method" value="put">
+  <label>Title:</label>
+  <input type ="text" name="question[title]" value="<%= @question.title %>">
+  <br>
+  <label>Description</label>
+  <textarea name="question[description]">"><%= @question.description %></textarea>
+  <br>
+  <br>
   <input type ="submit" value="Submit">
 </form>
 </div>
