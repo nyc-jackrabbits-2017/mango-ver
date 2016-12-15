@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
   has_many :comments, as: :commentable
 
   has_secure_password
+
 end
