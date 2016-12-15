@@ -9,7 +9,7 @@ end
 
 post '/questions' do
   user = User.find_by(id: current_user.id)
-  @question = user.question.new(params[:question])
+  @question = user.questions.new(params[:question])
   if @question.save
      redirect '/'
   else
