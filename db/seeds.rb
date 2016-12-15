@@ -4,9 +4,9 @@ Answer.destroy_all
 Comment.destroy_all
 Vote.destroy_all
 
-user1 = User.create(username: "bob", password:"password")
-user2 = User.create(username: "jim", password:"password")
-user3 = User.create(username: "johnny", password:"password")
+user1 = User.create!(username: "bob", password:"password")
+user2 = User.create!(username: "jim", password:"password")
+user3 = User.create!(username: "johnny", password:"password")
 
 questions_arr = ["Rails: CoffeeScript is not defined on new Application",
                 "Getting GoogleMapsService::Error::ApiError (GoogleMapsService::Error::ApiError) even though the key works",
@@ -30,26 +30,20 @@ comment_arr = ["This is a comment. I like what you said.",
               "I love MANGO-ver!!!!!!!!!"
               ]
 
-question1 = Question.create(title: questions_arr[0], description: question_desc_arr[0])
-question2 = Question.create(title: questions_arr[1], description: question_desc_arr[1])
-question3 = Question.create(title: questions_arr[2], description: question_desc_arr[2])
-question4 = Question.create(title: questions_arr[3], description: question_desc_arr[3])
+question1 = Question.create!(title: questions_arr[0], user: User.all.sample, description: question_desc_arr[0])
+question2 = Question.create!(title: questions_arr[1], user: User.all.sample, description: question_desc_arr[1])
+question3 = Question.create!(title: questions_arr[2], user: User.all.sample, description: question_desc_arr[2])
+question4 = Question.create!(title: questions_arr[3], user: User.all.sample, description: question_desc_arr[3])
 
-user1.questions << question1
-user1.questions << question4
-user2.questions << question2
-user3.questions << question3
 
 15.times do
-  User.all.sample.answers.create(question_id: rand(1..4), description: answer_arr.sample)
+  User.all.sample.answers.create!(question: Question.all.sample, description: answer_arr.sample)
 end
 
 30.times do
-  User.all.sample.answers.sample.comments.create(description: comment_arr.sample)
-  User.all.sample.questions.sample.comments.create(description: comment_arr.sample)
+  Answer.all.sample.comments.create!(description: comment_arr.sample, user: User.all.sample)
+  Question.all.sample.comments.create!(description: comment_arr.sample, user: User.all.sample)
 end
 
-100.times do
-  User.all.sample.answers.sample.votes.create(vote_value: [1,-1].sample)
-  User.all.sample.questions.sample.votes.create(vote_value: [1,-1].sample)
-end
+Answer.all.sample.votes.create!(user_id: rand(1..3), vote_value: [1,-1].sample)
+Question.all.sample.votes.create!(user_id: 1, vote_value: [1,-1].sample)
