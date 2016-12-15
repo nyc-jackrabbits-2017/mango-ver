@@ -1,13 +1,39 @@
-<form class="" action="/votes" method="post">
-  <input type="hidden" name="vote[voteable_type]" value="Question">
-  <input type="hidden" name="vote[voteable_id]" value="1">
-  <input type="hidden" name="vote[value]" value="1">
-  <button type="submit" class="glyphicon glyphicon-hand-up" name="" value="">
-</form>
+<%= erb :_errors, layout: false %>
 
-<form class="" action="/votes" method="post">
-  <input type="hidden" name="vote[voteable_type]" value="Question">
-  <input type="hidden" name="vote[voteable_id]" value="1">
-  <input type="hidden" name="vote[value]" value="-1">
-  <button type="submit" class="glyphicon glyphicon-hand-down" name="" value="">
-</form>
+<% if already_voted? %>
+
+  <form class="" action="/votes" method="post">
+    <input type="hidden" name="_method" value="put">
+    <input type="hidden" name="vote[vote_value]" value="1">
+    <button type="submit" class="glyphicon glyphicon-hand-up">
+  </form>
+
+  <form class="" action="/votes" method="post">
+    <input type="hidden" name="_method" value="put">
+    <input type="hidden" name="vote[vote_value]" value="0">
+    <button type="submit" class="glyphicon glyphicon-remove-circle">
+  </form>
+
+  <form class="" action="/votes" method="post">
+    <input type="hidden" name="_method" value="put">
+    <input type="hidden" name="vote[vote_value]" value="-1">
+    <button type="submit" class="glyphicon glyphicon-hand-down">
+  </form>
+
+  <% else %>
+
+  <form class="" action="/votes" method="post">
+    <input type="hidden" name="vote[voteable_type]" value="Question">
+    <input type="hidden" name="vote[voteable_id]" value="1">
+    <input type="hidden" name="vote[vote_value]" value="1">
+    <button type="submit" class="glyphicon glyphicon-hand-up" name="" value="">
+  </form>
+
+  <form class="" action="/votes" method="post">
+    <input type="hidden" name="vote[voteable_type]" value="Question">
+    <input type="hidden" name="vote[voteable_id]" value="1">
+    <input type="hidden" name="vote[vote_value]" value="-1">
+    <button type="submit" class="glyphicon glyphicon-hand-down" name="" value="">
+  </form>
+
+  <% end %>
