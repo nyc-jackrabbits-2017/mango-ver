@@ -1,0 +1,17 @@
+<h1>Revise your answer...</h1>
+
+<% if @errors %>
+  <span>Something went wrong:</span>
+  <ul class="error-list pad-b-2">
+    <% @errors.each do |error| %>
+      <li class="error-item"><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<form method="post" action="/answers/<%= @answer.id %>">
+  <input type="hidden" name="_method" value="put">
+  <label for="description-textarea" class="block mar-b-1">Description:</label>
+  <textarea id="description-textarea" name="description" tabindex="2" class="block w-100 h-10 no-resize no-outline no-border no-resize pad-1 mar-b-2"></textarea>
+  <input type="submit" value="Update" tabindex="3" class="block button w-100 mar-t-4 mar-b-3 pad-2 round-1 text-c center no-border no-outline">
+</form>
