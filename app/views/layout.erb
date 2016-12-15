@@ -21,11 +21,11 @@
     <nav>
       <a href="/">Home</a>
       <% if !logged_in? %>
-      <a href="/login">Login</a>
+        <a href="/login">Login</a>
+        <a href="/new">Signup</a>
       <% else %>
-      <a href="/logout">Logout</a>
+        <a href="/logout">Logout</a>
       <% end %>
-      <a href="/new">Signup</a>
     </nav>
 <body>
 
