@@ -1,1 +1,17 @@
-<p> INDEX </p>
+<div class="container">
+  <% if @questions %>
+  <% @questions.each do |question| %>
+    <ul>
+      <li><a href="/questions/<%=question.id%>"><%= question.title %></a></li>
+      <li><a href="/questions/<%=question.id%>"><%= question.user.username %></a></li>
+      <a href="/questions/<%=question.id%>"/edit>Edit Question</a>
+      <form method="post" action="/questions/<%=question.id%>">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Logout" style="background:none;border:0;color:black">
+      </form>
+    </ul>
+  <% end %>
+  <% end %>
+
+  <a href="/questions/new">Post a new question!</a>
+</div>

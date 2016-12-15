@@ -8,6 +8,6 @@ class Question < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :votes, as: :voteable
 
-
+  include VoteCounter
 
 end
