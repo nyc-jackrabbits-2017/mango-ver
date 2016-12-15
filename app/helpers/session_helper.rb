@@ -5,3 +5,14 @@ end
 def current_user
   @current_user ||=User.find_by(id: session[:user_id])
 end
+
+def authorized?(question)
+  @current_user ||=User.find_by(id: session[:user_id])
+  return false unless @current_user
+  if @current_user.id  == question.user_id
+    return true
+  else
+    return false
+  end
+
+end
