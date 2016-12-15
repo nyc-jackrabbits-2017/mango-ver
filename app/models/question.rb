@@ -10,4 +10,8 @@ class Question < ActiveRecord::Base
 
   include VoteCounter
 
+  def sorted_answers
+    sorted_answers = self.answers.sort_by! {|answer| answer.vote_sum}
+    sorted_answers.unshift!(sorted_answers.delete_if { |answer| answer.answer_chosen }.first)
+  end
 end
