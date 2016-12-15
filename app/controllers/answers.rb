@@ -1,6 +1,19 @@
- # put in the route to show a specific question
- #
- # @answers = Answer.where(question_id:params[id])
+
+get '/questions/:id/answers/new' do
+  @question = Question.find(params[:id])
+  erb :'answer/new'
+end
+
+post '/questions/:id/answers' do
+  question = Question.find_by(id: params[:id])
+  @answer = question.answers.new(description: params[:description], user_id: current_user.id)
+  if @answer.save
+      redirect "/questions/#{question.id}"
+  else
+      @errors = @answer.errors.full_messages
+      erb :'/' #need to send it to correct place
+  end
+end
 
 post '/answers/:id/upvote' do
   answer = Answer.find(params[:id])
@@ -12,6 +25,7 @@ post '/answers/:id/upvote' do
   end
   redirect “/questions”
 end
+#add vote sum method
 
 
 post '/answers/:id/downvote' do
@@ -36,7 +50,7 @@ put '/answers/:id' do
   @answer = Answer.find(params[:id])
   @answer.assign_attributes(description: params[:description])
     if @answer.save
-      redirect "/" # this should be redirected back to question
+      redirect "/questions/#{@answer.question_id}" # this should be redirected back to question
     else
       @errors = @answer.errors.full_messages
       erb :'answer/edit'
@@ -47,23 +61,8 @@ end
 get '/answers/:id/delete' do
   @answer = Answer.find(params[:id])
     @answer.destroy
-    redirect '/'# this should be redirected back to question
-end
-
-get '/answers/:id/new' do
-  @question = Question.find(params[:id])
-  erb :'answer/new'#need to send it to correct place
+    redirect "/questions/#{@answer.question_id}"
 end
 
 
-post '/answers/:id/questions' do
-  @answer = Answer.new(description: params[:description], question_id: params[:id], user_id: current_user)#need helper method for current user
-  if @answer.save
-      redirect "/"
-    else
-      @errors = @entry.errors.full_messages
-      erb :'/' #need to send it to correct place
-end
 
-
-end

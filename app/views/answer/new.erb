@@ -10,7 +10,8 @@
 <% end %>
 
 
-<form method="post" action="/answers/<%= @question.id %>/questions">
-  <input type="text" name="description" placeholder="description">
+<form method="post" action="/questions/<%= @question.id %>/answers">
+  <textarea name="description" placeholder="description"></textarea>
+  <br>
   <input type="submit" value="submit new answer">
 </form>
