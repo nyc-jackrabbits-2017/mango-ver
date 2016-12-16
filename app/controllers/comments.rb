@@ -34,6 +34,5 @@ delete '/comments/:id' do
 
   @comment = Comment.find_by(id: params[:id])
   @comment.destroy
-    binding.pry
    redirect "/questions/#{@comment.commentable_id}"
 end
