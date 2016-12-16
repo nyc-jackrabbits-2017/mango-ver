@@ -10,14 +10,14 @@
       <p>
         <br>
         <span><%= answer.description %></span>
-        <br>
-        <h6>
-          <a class="edit" href='/answers/<%= answer.id %>/edit'>Edit</a>
-          <a class="delete" href='/answers/<%= answer.id %>/delete'>Delete</a>
-        </h6>
+        <% if authorized?(answer)%>
+        <a class="edit" href='/answers/<%= answer.id %>/edit'>Edit</a>
+        <a class="delete" href='/answers/<%= answer.id %>/delete'>Delete</a>
+        <%end%>
       </p>
+      <%= erb :'comments/show', layout: false, locals: {object: answer} %>
+      <%= erb :'comments/new', layout: false, locals: {object: answer}%>
     </article>
-
-  <% end %>
+    <% end %>
   <% end %>
 </div>

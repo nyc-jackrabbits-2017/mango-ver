@@ -1,3 +1,4 @@
+<%= erb :_errors, layout: false %>
 <div class="container">
 <h3><%= @question.title %></h3>
 <p>Asked by: <%= @question.user.username.capitalize %> on <%=@question.created_at.strftime("%b.%d  %Y")%> at <%=@question.created_at.strftime("%H:%M")%> </p>
@@ -14,10 +15,9 @@
   <%end%>
 <br>
 <%= erb :'votes/_new', layout: false, locals: {voteable_object: @question} %>
+<%= erb :'comments/show', layout: false, locals: {object: @question} %>
+<%= erb :'comments/new', layout: false, locals: {object: @question}%>
 
-<ul>
-
-</ul>
 <br>
 <% if @question.answers %>
   <% if @question.answers.count > 1 %>
