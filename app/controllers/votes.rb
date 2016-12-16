@@ -1,5 +1,5 @@
 get '/votes/new' do
-  erb :'votes/new'
+  erb :'votes/_new'
 end
 
 post '/votes' do
@@ -9,7 +9,7 @@ post '/votes' do
     "Thank you for your vote"
   else
     @errors = @vote.errors.full_messages
-    erb :'votes/new'
+    erb :'votes/_new'
   end
 end
 
@@ -20,6 +20,6 @@ end
       "Thank you for your vote"
     else
       @errors = @vote.errors.full_messages
-      erb :'votes/new'
+      erb :'votes/_new'
     end
   end
