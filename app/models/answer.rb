@@ -14,7 +14,7 @@ class Answer < ActiveRecord::Base
   def only_one_best_answer
     return true if self.answer_chosen == false
     answers_for_this_question = self.question.answers
-    answers_chosen = answers_for_this_question.select {|answer| answer.vote_sum}
+    answers_chosen = answers_for_this_question.select {|answer| answer.answer_chosen}
     if answers_chosen.length == 0
       return true
     else
