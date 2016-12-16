@@ -1,12 +1,21 @@
-<% if authorized?(@question) %>
-  <form action="<%= "/answer_chosen/#{answer.id}" %>" method="post">
-    <input type="hidden" name="_method" value="put">
-    <% if answer.answer_chosen %>
-      <input type="hidden" name="answer_chosen" value="false">
-      <button type="submit" class="glyphicon glyphicon-delete"></button>
-    <% else %>
-      <input type="hidden" name="answer_chosen" value="true">
-      <button type="submit" class="glyphicon glyphicon-ok"></button>
-    <% end %>
-  </form>
-<% end %>
+<div class="">
+  <% if authorized?(question) %>
+    <form action="<%= "/answer_chosen/#{answer.id}" %>" method="post">
+      <input type="hidden" name="_method" value="put">
+      <% if answer.answer_chosen %>
+        <span>Click to undo best answer choice</span>
+        <input type="hidden" name="answer_chosen" value="false">
+        <button type="submit" class="glyphicon glyphicon-remove" style="color:red"></button>
+      <% else %>
+        <span>Click to choose as best answer</span>
+        <input type="hidden" name="answer_chosen" value="true">
+        <button type="submit" class="glyphicon glyphicon-ok" style="color: green"></button>
+      <% end %>
+    </form>
+  <% end %>
+
+  <% if answer.answer_chosen %>
+      <span>Best Answer</span>
+      <span class="glyphicon glyphicon-ok" style="color: green"></span>
+  <% end %>
+</div>

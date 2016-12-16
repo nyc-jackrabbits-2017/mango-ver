@@ -71,6 +71,6 @@ put '/answer_chosen/:answer_id' do
   if answer.save
     redirect request.referer
   else
-    "Display error of already picked a best answer"
+    redirect request.referer
   end
 end
