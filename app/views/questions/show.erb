@@ -29,11 +29,7 @@
 <%= erb :"_answer" %>
 
 <br>
-<h4>Your Answer</h4>
-<form method="post" action="/questions/<%= @question.id %>/answers">
-  <textarea name="description" placeholder="description"></textarea>
-  <br>
-  <input type="submit" value="submit new answer">
-</form>
+
+<%= erb :'answer/new', layout: false %>
 
 </div>

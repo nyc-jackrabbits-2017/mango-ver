@@ -2,7 +2,7 @@
 <form method="post" action="/comments/<%=@comment.id%>">
   <input type="hidden" name="_method" value="put">
   <label>Description</label>
-  <textarea name="comment[description]">"><%= @comment.description %></textarea>
+  <textarea name="comment[description]"><%= @comment.description %></textarea>
   <br>
   <br>
   <input type ="submit" value="Submit">
