@@ -6,6 +6,7 @@
 
       <div class="vote-block">
       <%= erb :'answer/_best_answer', layout: false, locals: {question: @question, answer: answer} %>
+      <br>
         <%= erb :'votes/_new', layout: false, locals: {voteable_object: answer} %>
       </div>
 
@@ -17,15 +18,16 @@
         <span><%= answer.description %></span>
 
         <br>
-         <h6>
-          <a class="edit" href='/answers/<%= answer.id %>/edit'>Edit</a>
-          <a class="delete" href='/answers/<%= answer.id %>/delete'>Delete</a>
-         </h6>
          </p>
 
-        <% if authorized?(answer)%>
-        <a class="edit" href='/answers/<%= answer.id %>/edit'>Edit</a>
-        <a class="delete" href='/answers/<%= answer.id %>/delete'>Delete</a>
+
+
+        <h6>
+          <a class="edit" href='/answers/<%= answer.id %>/edit'>Comment</a>
+          <% if authorized?(answer)%>
+          <a class="edit" href='/answers/<%= answer.id %>/edit'>Edit</a>
+          <a class="delete" href='/answers/<%= answer.id %>/delete'>Delete</a>
+        </h6>
         <%end%>
       </p>
       <%= erb :'comments/show', layout: false, locals: {object: answer} %>

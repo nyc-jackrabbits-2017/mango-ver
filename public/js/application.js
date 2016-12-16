@@ -11,8 +11,32 @@ $(document).ready(function(e) {
     });
   });
 
-  $("#display-answer").on("submit", function(event) {
+  $("#display-question-form").on("click", function(event) {
     event.preventDefault();
+    $(this).hide();
+    var url = $(event.target).attr("href");
+
+    $.ajax({
+      method: "get",
+      url: url
+    }).done(function(response) {
+       $(".container").append(response);
+    })
+
+  });
+
+  $(".container").on("submit","#show-question", function(event){
+    event.preventDefault();
+    var data = $(event.target).serialize();
+
+    $.ajax({
+       url: '/questions',
+       method: 'post',
+       data: data
+
+    }).done(function(response) {
+       $("#question-list").append(response);
+    });
 
   });
 
