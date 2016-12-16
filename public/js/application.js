@@ -35,6 +35,9 @@ $(document).ready(function(e) {
        data: data
 
     }).done(function(response) {
+       $("#show-question")[0].reset();
+       $("#show-question").hide();
+       $("#display-question-form").show();
        $("#question-list").append(response);
     });
 

@@ -16,9 +16,9 @@ post '/questions' do
   @question = user.questions.new(params[:question])
   if @question.save
     if request.xhr?
-    erb :"questions/_add_answer", layout: false
+      erb :"questions/_add_answer", layout: false, locals: {question: @question}
     else
-     redirect '/'
+      redirect '/'
     end
   else
     @errors = @question.errors.full_messages
