@@ -3,11 +3,11 @@
     <form action="<%= "/answer_chosen/#{answer.id}" %>" method="post">
       <input type="hidden" name="_method" value="put">
       <% if answer.answer_chosen %>
-        <span>Click to undo best answer choice</span>
+        <span>Undo best answer choice</span>
         <input type="hidden" name="answer_chosen" value="false">
         <button type="submit" class="glyphicon glyphicon-remove" style="color:red"></button>
       <% else %>
-        <span>Click to choose as best answer</span>
+        <span>Choose as best answer</span>
         <input type="hidden" name="answer_chosen" value="true">
         <button type="submit" class="glyphicon glyphicon-ok" style="color: green"></button>
       <% end %>

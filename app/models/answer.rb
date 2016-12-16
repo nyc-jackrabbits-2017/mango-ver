@@ -6,14 +6,15 @@ class Answer < ActiveRecord::Base
   has_many :votes, as: :voteable
   has_many :comments, as: :commentable
 
-  include VoteCounter
 
   before_save :only_one_best_answer
+
+  include VoteCounter
 
   def only_one_best_answer
     return true if self.answer_chosen == false
     answers_for_this_question = self.question.answers
-    answers_chosen = answers_for_this_question.select {|answer| answer.answer_chosen}
+    answers_chosen = answers_for_this_question.select {|answer| answer.vote_sum}
     if answers_chosen.length == 0
       return true
     else
@@ -21,5 +22,6 @@ class Answer < ActiveRecord::Base
       return false
     end
   end
+
 
 end
