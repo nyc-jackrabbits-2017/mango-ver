@@ -11,7 +11,7 @@ class Answer < ActiveRecord::Base
   before_save :only_one_best_answer
 
   def only_one_best_answer
-    return true if answer_chosen == false
+    return true if self.answer_chosen == false
     answers_for_this_question = self.question.answers
     answers_chosen = answers_for_this_question.select {|answer| answer.answer_chosen}
     if answers_chosen.length == 0
