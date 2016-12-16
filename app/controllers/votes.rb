@@ -6,10 +6,10 @@ post '/votes' do
   @vote = Vote.new(params[:vote])
   @vote.user = current_user
   if @vote.save
-    redirect '/votes/new'
+    redirect request.referer
   else
     @errors = @vote.errors.full_messages
-    erb :'votes/_new'
+    redirect request.referer
   end
 end
 
@@ -19,9 +19,9 @@ put '/votes' do
   @vote = Vote.find_by(vote_info)
   @vote.vote_value = params[:vote_value]
   if @vote.save
-    redirect '/votes/new'
+    redirect request.referer
   else
     @errors = @vote.errors.full_messages
-    erb :'votes/_new'
+    redirect request.referer
   end
 end

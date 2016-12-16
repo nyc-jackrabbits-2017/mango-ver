@@ -2,6 +2,7 @@
 <h3><%= @question.title %></h3>
 <h4>Asked by:<%= @question.user.username %></h4>
 <p><%= @question.description %></p>
+<%= erb :'votes/_new', layout: false, locals: {voteable_object: @question} %>
 
 <ul>
   <a href="/questions/<%=@question.id%>/edit">Edit Question</a>
