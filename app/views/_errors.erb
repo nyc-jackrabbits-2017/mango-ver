@@ -1,7 +1,10 @@
 <% if @errors %>
-  <ul>
-    <% @errors.each do |error| %>
-    <li><%= error %></li>
-    <% end %>
-  </ul>
+  <div style="inline">
+    <ul>
+      <% @errors.each do |error| %>
+      <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
+

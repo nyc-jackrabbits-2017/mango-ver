@@ -1,39 +1,40 @@
 <div class="container">
-<h3><%= @question.title %></h3>
-<p>Asked by: <%= @question.user.username.capitalize %> on <%=@question.created_at.strftime("%b.%d  %Y")%> at <%=@question.created_at.strftime("%H:%M")%> </p>
+
+<div class='question'>
+  <%= erb :'votes/_new', layout: false, locals: {voteable_object: @question} %>
+  <div id="question-block">
+    <h3><%= @question.title %></h3>
+    <p>Asked by: <%= @question.user.username.capitalize %> on <%=@question.created_at.strftime("%b.%d  %Y")%> at <%=@question.created_at.strftime("%H:%M")%> </p>
+    <br>
+    <p><%= @question.description %></p>
+      <% if authorized?(@question)%>
+        <h6>
+        <form method="post" action="/questions/<%=@question.id%>">
+          <input type="hidden" name="_method" value="delete">
+          <a href="/questions/<%=@question.id%>/edit">Edit</a>
+          <input style="border:none; background-color: transparent; color:#3366BB" type="submit" value="Delete">
+        </form>
+      </h6>
+      <%end%>
+  </div>
+</div>
+
 <br>
-<p><%= @question.description %></p>
-  <% if authorized?(@question)%>
-    <h6>
-    <form method="post" action="/questions/<%=@question.id%>">
-      <input type="hidden" name="_method" value="delete">
-      <a href="/questions/<%=@question.id%>/edit">Edit</a>
-      <input style="border:none; background-color: transparent; color:#3366BB" type="submit" value="Delete">
+
+  <% if @question.answers %>
+    <% if @question.answers.count > 1 %>
+     <h4><%=@question.answers.count%> Answers</h4>
+     <% elsif @question.answers.count == 1 %>
+     <h4><%=@question.answers.count%> Answer</h4>
+     <% end %>
+    <% end %>
+
+  <%= erb :"_answer" %>
+<br>
+  <h4>Your Answer</h4>
+    <form id="display-answer" method="post" action="/questions/<%= @question.id %>/answers">
+      <textarea name="description" placeholder="description"></textarea>
+      <br>
+      <input type="submit" value="submit new answer">
     </form>
-  </h6>
-  <%end%>
-<br>
-<%= erb :'votes/_new', layout: false, locals: {voteable_object: @question} %>
-
-<ul>
-
-</ul>
-<br>
-<% if @question.answers %>
-  <% if @question.answers.count > 1 %>
-  <h4><%=@question.answers.count%> Answers</h4>
-  <% elsif @question.answers.count == 1 %>
-  <h4><%=@question.answers.count%> Answer</h4>
-  <% end %>
-<% end %>
-<%= erb :"_answer" %>
-
-<br>
-<h4>Your Answer</h4>
-<form method="post" action="/questions/<%= @question.id %>/answers">
-  <textarea name="description" placeholder="description"></textarea>
-  <br>
-  <input type="submit" value="submit new answer">
-</form>
-
 </div>

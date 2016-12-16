@@ -2,22 +2,26 @@
   <% if @question.answers %>
   <% @question.sorted_answers.each do |answer| %>
 
-    <article id="<%= answer.id %>">
-
       <%= erb :'answer/_best_answer', layout: false, locals: {question: @question, answer: answer} %>
       <%= erb :'votes/_new', layout: false, locals: {voteable_object: answer} %>
 
-      <p>
-        <br>
+      <article id="<%= answer.id %>">
+
+
+         <p>
+         <br>
         <span><%= answer.description %></span>
         <br>
-        <h6>
+         <h6>
           <a class="edit" href='/answers/<%= answer.id %>/edit'>Edit</a>
           <a class="delete" href='/answers/<%= answer.id %>/delete'>Delete</a>
-        </h6>
-      </p>
+         </h6>
+         </p>
+
+
     </article>
 
   <% end %>
   <% end %>
+
 </div>

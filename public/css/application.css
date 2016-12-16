@@ -31,3 +31,22 @@ textarea {
   background-color: transparent;
 }
 
+.question {
+  position: relative;
+}
+
+#question-block {
+  width: 610px;
+  display: inline-block;
+
+}
+
+#vote-block {
+  width: 105px;
+  display: inline-block;
+}
+
+#answer-block {
+  width: 610px;
+  display: inline-block;
+}
