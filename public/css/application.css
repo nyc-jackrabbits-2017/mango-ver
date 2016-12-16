@@ -3,3 +3,31 @@
   background-color: transparent;
   border: none;
 }
+
+.container {
+  margin: 40px auto;
+  margin-top: 20px;
+  width: 800px;
+  padding: 10px 30px 30px 30px;
+}
+
+.style-me {
+  margin-left: 35px;
+}
+
+
+textarea {
+    width: 500px;
+    height: 150px;
+}
+
+
+#style-title {
+  width: 500px;
+}
+
+.hide-button {
+  border:none;
+  background-color: transparent;
+}
+
