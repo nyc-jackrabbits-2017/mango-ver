@@ -1,4 +1,4 @@
-<h1>Revise your answer...</h1>
+<h3>Revise your answer...</h3>
 
 <% if @errors %>
   <span>Something went wrong:</span>
@@ -9,9 +9,11 @@
   </ul>
 <% end %>
 
+<br>
 <form method="post" action="/answers/<%= @answer.id %>">
   <input type="hidden" name="_method" value="put">
-  <label for="description-textarea" class="block mar-b-1">Description:</label>
-  <textarea id="description-textarea" name="description" tabindex="2" class="block w-100 h-10 no-resize no-outline no-border no-resize pad-1 mar-b-2"></textarea>
+  <h5>Description:</h5>
+  <textarea id="description-textarea" name="description" tabindex="2" class="block w-100 h-10 no-resize no-outline no-border no-resize pad-1 mar-b-2"><%=@answer.description%></textarea>
+  <br>
   <input type="submit" value="Update" tabindex="3" class="block button w-100 mar-t-4 mar-b-3 pad-2 round-1 text-c center no-border no-outline">
 </form>
