@@ -12,10 +12,9 @@
     </form>
 
     <form class="" action="/votes" method="post">
-      <input type="hidden" name="_method" value="put">
+      <input type="hidden" name="_method" value="delete">
       <input type="hidden" name="vote[voteable_type]" value="<%= voteable_object.class %>">
       <input type="hidden" name="vote[voteable_id]" value="<%= voteable_object.id %>">
-      <input type="hidden" name="vote_value" value="0">
       <button type="submit" class="glyphicon glyphicon-remove-circle"></button>
     </form>
 

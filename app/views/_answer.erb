@@ -3,14 +3,12 @@
   <% @question.sorted_answers.each do |answer| %>
 
     <article id="<%= answer.id %>">
-      <form method="post" action='/answers/<%= answer.id %>/upvote' class="inline">
-        <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button upvote-button"></button>
-      </form>
 
-      <form method="post" action='/answers/<%= answer.id %>/downvote' class="inline">
-        <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button upvote-button"></button>
-      </form>
+      <%= erb :'answer/_best_answer', layout: false, locals: {question: @question, answer: answer} %>
+      <%= erb :'votes/_new', layout: false, locals: {voteable_object: answer} %>
+
       <p>
+        <br>
         <span><%= answer.description %></span>
         <% if authorized?(answer)%>
         <a class="edit" href='/answers/<%= answer.id %>/edit'>Edit</a>

@@ -25,3 +25,11 @@ put '/votes' do
     redirect request.referer
   end
 end
+
+delete '/votes' do
+  vote_info = params[:vote]
+  vote_info[:user] = current_user
+  @vote = Vote.find_by(vote_info)
+  @vote.destroy if @vote
+  redirect request.referer
+end

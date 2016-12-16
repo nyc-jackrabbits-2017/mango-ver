@@ -1,15 +1,19 @@
 <div class="container">
 
+  <h3 class="style-me">Top Questions</h3>
+  <br>
   <% if @questions %>
     <% @questions.each do |question| %>
       <ul style="list-style: none;">
-        <li><a href="/questions/<%=question.id%>"><%= question.title %></a></li>
-        <li><%= question.user.username %></li>
+        <li><h4><a href="/questions/<%=question.id%>"><%= question.title %></a></h4></li>
+        <li><p>Asked by: <%= question.user.username.capitalize %> on <%=question.created_at.strftime("%b.%d  %Y")%> at <%=question.created_at.strftime("%H:%M")%> </p></li>
+        <br>
       </ul>
       <% end %>
   <% end %>
 
   <% if logged_in? %>
-  <a href="/questions/new">Post a new question!</a>
+  <h5><a class="style-me" href="/questions/new">Post a new question!</a><h5>
   <% end %>
+
 </div>

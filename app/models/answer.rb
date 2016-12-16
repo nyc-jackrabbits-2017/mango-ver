@@ -6,9 +6,10 @@ class Answer < ActiveRecord::Base
   has_many :votes, as: :voteable
   has_many :comments, as: :commentable
 
-  include VoteCounter
 
   before_save :only_one_best_answer
+
+  include VoteCounter
 
   def only_one_best_answer
     return true if self.answer_chosen == false
@@ -21,5 +22,6 @@ class Answer < ActiveRecord::Base
       return false
     end
   end
+
 
 end

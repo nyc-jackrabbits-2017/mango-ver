@@ -1,21 +1,39 @@
 <%= erb :_errors, layout: false %>
+<div class="container">
 <h3><%= @question.title %></h3>
-<h4>Asked by: <%= @question.user.username %></h4>
+<p>Asked by: <%= @question.user.username.capitalize %> on <%=@question.created_at.strftime("%b.%d  %Y")%> at <%=@question.created_at.strftime("%H:%M")%> </p>
+<br>
 <p><%= @question.description %></p>
+  <% if authorized?(@question)%>
+    <h6>
+    <form method="post" action="/questions/<%=@question.id%>">
+      <input type="hidden" name="_method" value="delete">
+      <a href="/questions/<%=@question.id%>/edit">Edit</a>
+      <input style="border:none; background-color: transparent; color:#3366BB" type="submit" value="Delete">
+    </form>
+  </h6>
+  <%end%>
+<br>
 <%= erb :'votes/_new', layout: false, locals: {voteable_object: @question} %>
 <%= erb :'comments/show', layout: false, locals: {object: @question} %>
 <%= erb :'comments/new', layout: false, locals: {object: @question}%>
-<ul>
-  <% if authorized?(@question)%>
-      <a href="/questions/<%=@question.id%>/edit">Edit Question</a>
-      <form method="post" action="/questions/<%=@question.id%>">
-        <input type="hidden" name="_method" value="delete">
-        <input type="submit" value="Delete">
-      </form>
-      <%end%>
-</ul>
 
-<ul>
-</ul>
+<br>
+<% if @question.answers %>
+  <% if @question.answers.count > 1 %>
+  <h4><%=@question.answers.count%> Answers</h4>
+  <% elsif @question.answers.count == 1 %>
+  <h4><%=@question.answers.count%> Answer</h4>
+  <% end %>
+<% end %>
 <%= erb :"_answer" %>
-<a class="create" href='/questions/<%= @question.id %>/answers/new'>New answer</a>
+
+<br>
+<h4>Your Answer</h4>
+<form method="post" action="/questions/<%= @question.id %>/answers">
+  <textarea name="description" placeholder="description"></textarea>
+  <br>
+  <input type="submit" value="submit new answer">
+</form>
+
+</div>
