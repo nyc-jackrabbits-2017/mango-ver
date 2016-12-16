@@ -1,14 +1,15 @@
 <div class="container">
 
   <% if @questions %>
-  <% @questions.each do |question| %>
-    <ul style="list-style: none;">
-      <li><a href="/questions/<%=question.id%>"><%= question.title %></a></li>
-      <li><%= question.user.username %></li>
-    </ul>
-  <% end %>
+    <% @questions.each do |question| %>
+      <ul style="list-style: none;">
+        <li><a href="/questions/<%=question.id%>"><%= question.title %></a></li>
+        <li><%= question.user.username %></li>
+      </ul>
+      <% end %>
   <% end %>
 
+  <% if logged_in? %>
   <a href="/questions/new">Post a new question!</a>
-
+  <% end %>
 </div>

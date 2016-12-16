@@ -1,18 +1,17 @@
 
 <h3><%= @question.title %></h3>
-<h4>Asked by:<%= @question.user.username %></h4>
+<h4>Asked by: <%= @question.user.username %></h4>
 <p><%= @question.description %></p>
 <%= erb :'votes/_new', layout: false, locals: {voteable_object: @question} %>
 
 <ul>
-  <a href="/questions/<%=@question.id%>/edit">Edit Question</a>
-  <form method="post" action="/questions/<%=@question.id%>">
-    <input type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete">
+  <%if authorized?(@question)%>
+      <a href="/questions/<%=@question.id%>/edit">Edit Question</a>
+      <form method="post" action="/questions/<%=@question.id%>">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete">
   </form>
+      <%end%>
 </ul>
-
-
 <%= erb :"_answer" %>
-
 <a class="create" href='/questions/<%= @question.id %>/answers/new'>New answer</a>
