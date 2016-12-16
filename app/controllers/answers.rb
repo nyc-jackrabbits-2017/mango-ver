@@ -64,3 +64,13 @@ get '/answers/:id/delete' do
     @answer.destroy
     redirect "/questions/#{@answer.question_id}"
 end
+
+put '/answer_chosen/:answer_id' do
+  answer = Answer.find_by(id: params[:answer_id])
+  answer.answer_chosen = params[:answer_chosen] if answer
+  if answer.save
+    redirect request.referer
+  else
+    "Display error of already picked a best answer"
+  end
+end
