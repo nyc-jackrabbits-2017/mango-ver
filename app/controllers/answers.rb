@@ -11,7 +11,7 @@ post '/questions/:id/answers' do
       redirect "/questions/#{question.id}"
   else
       @errors = @answer.errors.full_messages
-      erb :'/' #need to send it to correct place
+      erb :'answer/new'
   end
 end
 
@@ -50,7 +50,7 @@ put '/answers/:id' do
   @answer = Answer.find(params[:id])
   @answer.assign_attributes(description: params[:description])
     if @answer.save
-      redirect "/questions/#{@answer.question_id}" # this should be redirected back to question
+      redirect "/questions/#{@answer.question_id}"
     else
       @errors = @answer.errors.full_messages
       erb :'answer/edit'
