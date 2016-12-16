@@ -22,7 +22,9 @@
         </form>
       </h6>
       <%end%>
+      <%= erb :'comments/show', layout: false, locals: {object: @question} %>
   </div>
+    <%= erb :'comments/new', layout: false, locals: {object: @question}%>
 </div>
 
 
