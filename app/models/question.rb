@@ -16,5 +16,5 @@ class Question < ActiveRecord::Base
     sorted_answers.unshift(sorted_answers.delete_at(answer_chosen_index)) if answer_chosen_index
     return sorted_answers
   end
-  
+
 end
