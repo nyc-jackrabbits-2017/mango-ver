@@ -23,7 +23,6 @@
 
 
         <h6>
-          <a class="edit" href='/answers/<%= answer.id %>/edit'>Comment</a>
           <% if authorized?(answer)%>
           <a class="edit" href='/answers/<%= answer.id %>/edit'>Edit</a>
           <a class="delete" href='/answers/<%= answer.id %>/delete'>Delete</a>

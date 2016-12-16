@@ -6,6 +6,7 @@
 <p>Asked by: <%= @question.user.username.capitalize %> on <%=@question.created_at.strftime("%b.%d  %Y")%> at <%=@question.created_at.strftime("%H:%M")%> </p>
 </div>
 <div class='question'>
+  <br>
   <%= erb :'votes/_new', layout: false, locals: {voteable_object: @question} %>
   <div id="question-block">
 
