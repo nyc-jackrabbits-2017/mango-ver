@@ -3,6 +3,7 @@ class Vote < ActiveRecord::Base
   validates_uniqueness_of :user_id, scope: [:voteable_type, :voteable_id]
 
   belongs_to :user
+  belongs_to :voteable, polymorphic: true
   belongs_to :answer, polymorphic: true
   belongs_to :question, polymorphic: true
 end

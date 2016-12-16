@@ -3,7 +3,7 @@
 <div>
 <% if logged_in? %>
   <% if already_voted?(voteable_object) %>
-    <form class="" action="/votes" method="post">
+    <form action="/votes" method="post">
       <input type="hidden" name="_method" value="put">
       <input type="hidden" name="vote[voteable_type]" value="<%= voteable_object.class %>">
       <input type="hidden" name="vote[voteable_id]" value="<%= voteable_object.id %>">
@@ -11,14 +11,14 @@
       <button type="submit" class="glyphicon glyphicon-hand-up"></button>
     </form>
 
-    <form class="" action="/votes" method="post">
+    <form action="/votes" method="post">
       <input type="hidden" name="_method" value="delete">
       <input type="hidden" name="vote[voteable_type]" value="<%= voteable_object.class %>">
       <input type="hidden" name="vote[voteable_id]" value="<%= voteable_object.id %>">
       <button type="submit" class="glyphicon glyphicon-remove-circle"></button>
     </form>
 
-    <form class="" action="/votes" method="post">
+    <form action="/votes" method="post">
       <input type="hidden" name="_method" value="put">
       <input type="hidden" name="vote[voteable_type]" value="<%= voteable_object.class %>">
       <input type="hidden" name="vote[voteable_id]" value="<%= voteable_object.id %>">
@@ -28,14 +28,14 @@
 
     <% else %>
 
-    <form class="" action="/votes" method="post">
+    <form action="/votes" method="post">
       <input type="hidden" name="vote[voteable_type]" value="<%= voteable_object.class %>">
       <input type="hidden" name="vote[voteable_id]" value="<%= voteable_object.id %>">
       <input type="hidden" name="vote[vote_value]" value="1">
       <button type="submit" class="glyphicon glyphicon-hand-up" name="" value=""></button>
     </form>
 
-    <form class="" action="/votes" method="post">
+    <form action="/votes" method="post">
       <input type="hidden" name="vote[voteable_type]" value="<%= voteable_object.class %>">
       <input type="hidden" name="vote[voteable_id]" value="<%= voteable_object.id %>">
       <input type="hidden" name="vote[vote_value]" value="-1">

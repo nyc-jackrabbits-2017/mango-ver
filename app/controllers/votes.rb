@@ -6,7 +6,11 @@ post '/votes' do
   @vote = Vote.new(params[:vote])
   @vote.user = current_user
   if @vote.save
-    redirect request.referer
+    if request.xhr?
+      erb :'votes/_new', layout: false, locals: {voteable_object: @vote.voteable}
+    else
+      redirect request.referer
+    end
   else
     @errors = @vote.errors.full_messages
     redirect request.referer
@@ -19,7 +23,11 @@ put '/votes' do
   @vote = Vote.find_by(vote_info)
   @vote.vote_value = params[:vote_value]
   if @vote.save
-    redirect request.referer
+    if request.xhr?
+      erb :'votes/_new', layout: false, locals: {voteable_object: @vote.voteable}
+    else
+      redirect request.referer
+    end
   else
     @errors = @vote.errors.full_messages
     redirect request.referer
@@ -31,5 +39,9 @@ delete '/votes' do
   vote_info[:user] = current_user
   @vote = Vote.find_by(vote_info)
   @vote.destroy if @vote
-  redirect request.referer
+  if request.xhr?
+    erb :'votes/_new', layout: false, locals: {voteable_object: @vote.voteable}
+  else
+    redirect request.referer
+  end
 end
