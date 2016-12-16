@@ -9,4 +9,11 @@ $(document).ready(function(e) {
       $(e.target).parent().html(r);
     });
   });
+  
+  $("#display-answer").on("submit", function(event) {
+    event.preventDefault();
+
+  });
+
+
 });
