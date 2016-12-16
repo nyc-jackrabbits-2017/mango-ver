@@ -4,14 +4,22 @@ get '/questions' do
 end
 
 get '/questions/new' do
-  erb :'questions/new'
+  if request.xhr?
+    erb :"questions/_new_question", layout: false
+  else
+    erb :'questions/new'
+  end
 end
 
 post '/questions' do
   user = User.find_by(id: current_user.id)
   @question = user.questions.new(params[:question])
   if @question.save
+    if request.xhr?
+    erb :"questions/_add_answer", layout: false
+    else
      redirect '/'
+    end
   else
     @errors = @question.errors.full_messages
     erb :'questions/new'

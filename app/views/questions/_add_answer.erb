@@ -1,0 +1,4 @@
+  <li><h4><a href="/questions/<%=question.id%>"><%= question.title %></a></h4></li>
+  <li><p>Asked by: <%= question.user.username.capitalize %> on <%=question.created_at.strftime("%b.%d  %Y")%> at <%=question.created_at.strftime("%H:%M")%> </p></li>
+
+

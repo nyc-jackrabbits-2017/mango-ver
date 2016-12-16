@@ -1,6 +1,6 @@
 <%= erb :_errors, layout: false %>
 
-<div>
+<div id="vote-block">
 <% if logged_in? %>
   <% if already_voted?(voteable_object) %>
     <form action="/votes" method="post">

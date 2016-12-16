@@ -2,22 +2,42 @@
   <% if @question.answers %>
   <% @question.sorted_answers.each do |answer| %>
 
-    <article id="<%= answer.id %>">
+  <div class="answer">
 
+      <div class="vote-block">
       <%= erb :'answer/_best_answer', layout: false, locals: {question: @question, answer: answer} %>
-      <%= erb :'votes/_new', layout: false, locals: {voteable_object: answer} %>
+      <br>
+        <%= erb :'votes/_new', layout: false, locals: {voteable_object: answer} %>
+      </div>
 
-      <p>
-        <br>
+
+    <div class="answer-block">
+      <article id="<%= answer.id %>">
+         <p>
+         <br>
         <span><%= answer.description %></span>
-        <% if authorized?(answer)%>
-        <a class="edit" href='/answers/<%= answer.id %>/edit'>Edit</a>
-        <a class="delete" href='/answers/<%= answer.id %>/delete'>Delete</a>
+
+        <br>
+         </p>
+
+
+
+        <h6>
+          <a class="edit" href='/answers/<%= answer.id %>/edit'>Comment</a>
+          <% if authorized?(answer)%>
+          <a class="edit" href='/answers/<%= answer.id %>/edit'>Edit</a>
+          <a class="delete" href='/answers/<%= answer.id %>/delete'>Delete</a>
+        </h6>
         <%end%>
       </p>
       <%= erb :'comments/show', layout: false, locals: {object: answer} %>
       <%= erb :'comments/new', layout: false, locals: {object: answer}%>
+
     </article>
+  </div>
+  </div>
+
     <% end %>
   <% end %>
+
 </div>

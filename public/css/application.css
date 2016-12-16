@@ -5,10 +5,10 @@
 }
 
 .container {
-  margin: 40px auto;
+  margin: 30px auto;
   margin-top: 20px;
-  width: 800px;
-  padding: 10px 30px 30px 30px;
+  width: 900px;
+  padding: 10px 20px 20px 20px;
 }
 
 .style-me {
@@ -23,10 +23,48 @@ textarea {
 
 
 #style-title {
-  width: 500px;
+  width: 460px;
 }
 
 .hide-button {
   border:none;
   background-color: transparent;
 }
+
+#add-border {
+
+}
+
+.question {
+  position: relative;
+}
+
+#question-block {
+  width: 500px;
+  display: inline-block;
+  margin-left: 100px;
+
+}
+
+#vote-block {
+  width: 185px;
+  display: inline-block;
+  text-align: center;
+}
+
+.answer {
+  position: relative;
+}
+
+.vote-block {
+  width: 185px;
+  display: inline-block;
+  text-align: center;
+}
+
+.answer-block {
+  width: 500px;
+  display: inline-block;
+  margin-left: 100px;
+}
+

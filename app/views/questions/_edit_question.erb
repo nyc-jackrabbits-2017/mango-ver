@@ -2,9 +2,12 @@
 <form method="post" action="/questions/<%=@question.id%>">
   <input type="hidden" name="_method" value="put">
   <label>Title:</label>
-  <input type ="text" name="question[title]" value="<%= @question.title %>">
   <br>
-  <label>Description</label>
+  <input id="style-title" type ="text" name="question[title]" value="<%= @question.title %>">
+  <br>
+  <br>
+  <label>Description:</label>
+  <br>
   <textarea name="question[description]">"><%= @question.description %></textarea>
   <br>
   <br>
