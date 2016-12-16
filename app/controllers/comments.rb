@@ -24,7 +24,7 @@ end
 put '/comments/:id' do
   @comment = Comment.find_by(id: params[:id])
   if @comment.update_attributes(params[:comment])
-     redirect "/questions/#{@comment.commentable_id}"
+     redirect "/questions/"
   else
     @errors = @comment.errors.full_messages
   end
@@ -34,5 +34,6 @@ delete '/comments/:id' do
 
   @comment = Comment.find_by(id: params[:id])
   @comment.destroy
-   redirect "/questions/#{@comment.commentable_id}"
+  binding.pry
+       redirect request.referer
 end

@@ -68,3 +68,36 @@ textarea {
   margin-left: 100px;
 }
 
+#comment_edit{
+  background-color: transparent;
+  font-size: 12px;
+  font-family: inherit;
+  color:#337ab7;
+  display: inline;
+  border: none;
+}
+
+#comment_delete{
+  background-color: transparent;
+  font-family: inherit;
+  font-size: 12px;
+  color:#337ab7;
+  display: inline;
+  border: none;
+}
+
+#comment_add{
+  background-color: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  color:#337ab7;
+  display: inline;
+  border: none;
+}
+
+#comment_form{
+  height: 25px;
+  width: 350px;
+  border-color: black;
+  border: .5px solid;
+}
