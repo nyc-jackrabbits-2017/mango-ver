@@ -3,7 +3,7 @@
 
 <div style="border-bottom: 1px solid black;">
 <h3><%= @question.title %></h3>
-<p>Asked by: <%= @question.user.username.capitalize %> on <%=@question.created_at.strftime("%b.%d  %Y")%> at <%=@question.created_at.strftime("%H:%M")%> </p>
+<p>Asked by: <%= @question.user.username.capitalize %> on <%=@question.created_at.strftime("%b.%d  %Y")%> at <%=@question.created_at.strftime("%I:%M %p")%> </p>
 </div>
 <div class='question'>
   <br>

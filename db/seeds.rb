@@ -11,12 +11,17 @@ user3 = User.create!(username: "johnny", password:"password")
 questions_arr = ["Rails: CoffeeScript is not defined on new Application",
                 "Getting GoogleMapsService::Error::ApiError (GoogleMapsService::Error::ApiError) even though the key works",
                 "What is wrong with this Rspec stub?",
-                "CSV::MalformedCSVError: Illegal quoting"
+                "CSV::MalformedCSVError: Illegal quoting",
+                "PHP Facebook SDK does not remember session variables",
+                "Translating while loop logic to a Jasper Report",
+                "sql select issue (mysql)"
                 ]
 question_desc_arr = ["I am getting this error on a new rails app after creating a controller with rails g controller hello index. Rails is having a problem adding the css file and javascript file. Rails has worked fine before this:",
                     "All of the sudden, I get this error: GoogleMapsService::Error::ApiError (GoogleMapsService::Error::ApiError): when running my code. When I run rails console, and run it line by line manually, routes return successfully with no ApiError. I have searched for answers online but with no success. Please help.",
                     "have stubbed out my API client. And have gotten it to return an expected hash. But I am not able to access the actual hash itself. E.g puts page # returns {:access_token=>blah, :name=>...",
-                    "I followed the advice of another SO question that asked this very same question. I added the quote_char option as so: CSV.foreach(path, headers: true, quote_char: ) do |row| rows = row.to_hash...."
+                    "I followed the advice of another SO question that asked this very same question. I added the quote_char option as so: CSV.foreach(path, headers: true, quote_char: ) do |row| rows = row.to_hash....",
+                    "I tried some examples,and a lot of queries but i couldn't get this working.",
+                    "Help!!"
                     ]
 
 answer_arr = ["This is the answer..., please check your environment variables",
@@ -34,7 +39,9 @@ question1 = Question.create!(title: questions_arr[0], user: User.all.sample, des
 question2 = Question.create!(title: questions_arr[1], user: User.all.sample, description: question_desc_arr[1])
 question3 = Question.create!(title: questions_arr[2], user: User.all.sample, description: question_desc_arr[2])
 question4 = Question.create!(title: questions_arr[3], user: User.all.sample, description: question_desc_arr[3])
-
+question4 = Question.create!(title: questions_arr[4], user: User.all.sample, description: question_desc_arr[4])
+question4 = Question.create!(title: questions_arr[5], user: User.all.sample, description: question_desc_arr[5])
+question4 = Question.create!(title: questions_arr[6], user: User.all.sample, description: question_desc_arr[6])
 
 15.times do
   User.all.sample.answers.create!(question: Question.all.sample, description: answer_arr.sample)
