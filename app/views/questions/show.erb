@@ -1,8 +1,10 @@
+<%= erb :_errors, layout: false %>
 <h3><%= @question.title %></h3>
 <h4>Asked by: <%= @question.user.username %></h4>
 <p><%= @question.description %></p>
 <%= erb :'votes/_new', layout: false, locals: {voteable_object: @question} %>
-
+<%= erb :'comments/show', layout: false, locals: {object: @question} %>
+<%= erb :'comments/new', layout: false, locals: {object: @question}%>
 <ul>
   <% if authorized?(@question)%>
       <a href="/questions/<%=@question.id%>/edit">Edit Question</a>
@@ -11,6 +13,9 @@
         <input type="submit" value="Delete">
       </form>
       <%end%>
+</ul>
+
+<ul>
 </ul>
 <%= erb :"_answer" %>
 <a class="create" href='/questions/<%= @question.id %>/answers/new'>New answer</a>
