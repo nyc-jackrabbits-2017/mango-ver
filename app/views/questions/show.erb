@@ -1,6 +1,6 @@
 <div class="container">
 <h3><%= @question.title %></h3>
-<p>Asked by: <%= @question.user.username.capitalize %> on <%=@question.created_at.strftime("%b.%d  %Y")%> at <%=@question.created_at.strftime("%H:%M")%> </p>
+<p>Asked by: <%= @question.user.username.capitalize %> on <%=@question.created_at.strftime("%b.%d  %Y")%> at <%=@question.created_at.strftime("%h:%m")%> </p>
 <br>
 <p><%= @question.description %></p>
   <% if authorized?(@question)%>
