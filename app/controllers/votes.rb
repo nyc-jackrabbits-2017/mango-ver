@@ -6,7 +6,7 @@ post '/votes' do
   @vote = Vote.new(params[:vote])
   @vote.user = current_user
   if @vote.save
-    "Thank you for your vote"
+    redirect '/votes/new'
   else
     @errors = @vote.errors.full_messages
     erb :'votes/_new'
@@ -19,7 +19,7 @@ put '/votes' do
   @vote = Vote.find_by(vote_info)
   @vote.vote_value = params[:vote_value]
   if @vote.save
-    "Thank you for your vote"
+    redirect '/votes/new'
   else
     @errors = @vote.errors.full_messages
     erb :'votes/_new'
