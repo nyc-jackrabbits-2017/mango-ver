@@ -1,4 +1,4 @@
-<h1>Add answer...</h1>
+<h3>Your Answer</h3>
 
 <% if @errors %>
   <span>Something went wrong:</span>
@@ -9,9 +9,12 @@
   </ul>
 <% end %>
 
-
-<form method="post" action="/questions/<%= @question.id %>/answers">
-  <textarea name="description" placeholder="description"></textarea>
-  <br>
-  <input type="submit" value="submit new answer">
-</form>
+<% if logged_in? %>
+  <form method="post" action="/questions/<%= @question.id %>/answers">
+    <textarea name="description" placeholder="description"></textarea>
+    <br>
+    <input type="submit" value="submit new answer">
+  </form>
+<% else %>
+  <p><a href="/login">Login</a> to answer questions</p>
+<% end %>

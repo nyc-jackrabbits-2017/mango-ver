@@ -1,0 +1,10 @@
+<div class="container">
+    <%if logged_in?%>
+<form class= "" method="post" action="/comments">
+  <input type="text" name="comment[description]" placeholder="description">
+  <input type="hidden" name="comment[commentable_type]" value="<%= object.class %>">
+  <input type="hidden" name="comment[commentable_id]" value="<%= object.id %>">
+  <input type="submit" value="Submit">
+</form>
+  <%end%>
+</div>

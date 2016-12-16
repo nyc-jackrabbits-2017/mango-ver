@@ -1,0 +1,16 @@
+<% if object.comments.empty? != true %>
+  <ul>
+    <% object.comments.each do |comment| %>
+    <li><%= comment.description %></li>
+      <%if authorized?(comment)%>
+      <form method="get" action="/comments/<%=comment.id%>/edit">
+        <input type="submit" value="Edit Comment">
+      </form>
+      <form method="post" action="/comments/<%=comment.id%>">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete Comment">
+      </form>
+      <%end%>
+    <% end %>
+  </ul>
+<% end %>

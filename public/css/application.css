@@ -1,14 +1,14 @@
 .glyphicon {
-  font-size: 18px;
+  font-size: 22px;
   background-color: transparent;
   border: none;
 }
 
 .container {
-  margin: 40px auto;
+  margin: 30px auto;
   margin-top: 20px;
-  width: 800px;
-  padding: 10px 30px 30px 30px;
+  width: 900px;
+  padding: 10px 20px 20px 20px;
 }
 
 .style-me {
@@ -31,22 +31,40 @@ textarea {
   background-color: transparent;
 }
 
+#add-border {
+
+}
+
 .question {
   position: relative;
 }
 
 #question-block {
-  width: 610px;
+  width: 500px;
   display: inline-block;
+  margin-left: 100px;
 
 }
 
 #vote-block {
-  width: 105px;
+  width: 185px;
   display: inline-block;
+  text-align: center;
 }
 
-#answer-block {
-  width: 610px;
-  display: inline-block;
+.answer {
+  position: relative;
 }
+
+.vote-block {
+  width: 185px;
+  display: inline-block;
+  text-align: center;
+}
+
+.answer-block {
+  width: 500px;
+  display: inline-block;
+  margin-left: 100px;
+}
+
