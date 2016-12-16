@@ -1,7 +1,9 @@
 <div id="comment-container">
 <% if object.comments.empty? != true %>
+<ul>
     <% object.comments.each do |comment| %>
-    <%= comment.description %>
+    <li><%= comment.description %></li>
+
       <%if authorized?(comment)%>
       <form method="get" action="/comments/<%=comment.id%>/edit">
         <input id= "comment_edit" type="submit" value="Edit Comment">
@@ -13,4 +15,6 @@
       <%end%>
     <% end %>
 <% end %>
+</ul>
+
 </div>
