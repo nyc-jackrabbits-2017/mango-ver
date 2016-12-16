@@ -9,12 +9,12 @@ class Question < ActiveRecord::Base
   has_many :votes, as: :voteable
 
   include VoteCounter
-
+  
   def sorted_answers
-    sorted_answers = self.answers.sort_by {|answer| answer.vote_sum}
+    sorted_answers = self.answers.sort{|a,b|b.vote_sum <=> a.vote_sum}
     answer_chosen_index = sorted_answers.index {|answer| answer.answer_chosen}
     sorted_answers.unshift(sorted_answers.delete_at(answer_chosen_index)) if answer_chosen_index
     return sorted_answers
   end
-  
+
 end

@@ -3,6 +3,10 @@
   <% @question.sorted_answers.each do |answer| %>
 
     <article id="<%= answer.id %>">
+
+      <%= erb :'answer/_best_answer', layout: false, locals: {question: @question, answer: answer} %>
+      <%= erb :'votes/_new', layout: false, locals: {voteable_object: answer} %>
+
       <p>
         <br>
         <span><%= answer.description %></span>
