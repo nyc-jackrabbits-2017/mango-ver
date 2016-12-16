@@ -1,0 +1,50 @@
+<%= erb :_errors, layout: false %>
+
+<div>
+<% if logged_in? %>
+  <% if already_voted?(voteable_object) %>
+
+    <form class="" action="/votes" method="post">
+      <input type="hidden" name="_method" value="put">
+      <input type="hidden" name="vote[voteable_type]" value="<%= voteable_object.class %>">
+      <input type="hidden" name="vote[voteable_id]" value="<%= voteable_object.id %>">
+      <input type="hidden" name="vote_value" value="1">
+      <button type="submit" class="glyphicon glyphicon-hand-up"></button>
+    </form>
+
+    <form class="" action="/votes" method="post">
+      <input type="hidden" name="_method" value="put">
+      <input type="hidden" name="vote[voteable_type]" value="<%= voteable_object.class %>">
+      <input type="hidden" name="vote[voteable_id]" value="<%= voteable_object.id %>">
+      <input type="hidden" name="vote_value" value="0">
+      <button type="submit" class="glyphicon glyphicon-remove-circle"></button>
+    </form>
+
+    <form class="" action="/votes" method="post">
+      <input type="hidden" name="_method" value="put">
+      <input type="hidden" name="vote[voteable_type]" value="<%= voteable_object.class %>">
+      <input type="hidden" name="vote[voteable_id]" value="<%= voteable_object.id %>">
+      <input type="hidden" name="vote_value" value="-1">
+      <button type="submit" class="glyphicon glyphicon-hand-down"></button>
+    </form>
+
+    <% else %>
+
+    <form class="" action="/votes" method="post">
+      <input type="hidden" name="vote[voteable_type]" value="<%= voteable_object.class %>">
+      <input type="hidden" name="vote[voteable_id]" value="<%= voteable_object.id %>">
+      <input type="hidden" name="vote[vote_value]" value="1">
+      <button type="submit" class="glyphicon glyphicon-hand-up" name="" value=""></button>
+    </form>
+
+    <form class="" action="/votes" method="post">
+      <input type="hidden" name="vote[voteable_type]" value="<%= voteable_object.class %>">
+      <input type="hidden" name="vote[voteable_id]" value="<%= voteable_object.id %>">
+      <input type="hidden" name="vote[vote_value]" value="-1">
+      <button type="submit" class="glyphicon glyphicon-hand-down" name="" value=""></button>
+    </form>
+
+    <% end %>
+<% end %>
+  <p><%= voteable_object.vote_sum %> votes</p>
+</div>

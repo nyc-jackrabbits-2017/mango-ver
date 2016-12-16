@@ -1,6 +1,6 @@
 <div class='answer-container'>
   <% if @question.answers %>
-  <% @question.answers.each do |answer| %>
+  <% @question.sorted_answers.each do |answer| %>
 
     <article id="<%= answer.id %>">
       <form method="post" action='/answers/<%= answer.id %>/upvote' class="inline">

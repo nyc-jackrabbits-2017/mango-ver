@@ -5,13 +5,14 @@ get '/questions/:id/answers/new' do
 end
 
 post '/questions/:id/answers' do
-  question = Question.find_by(id: params[:id])
-  @answer = question.answers.new(description: params[:description], user_id: current_user.id)
+  redirect '/login' unless logged_in?
+  @question = Question.find_by(id: params[:id])
+  @answer = @question.answers.new(description: params[:description], user_id: current_user.id)
   if @answer.save
-      redirect "/questions/#{question.id}"
+      redirect "/questions/#{@question.id}"
   else
       @errors = @answer.errors.full_messages
-      erb :'/' #need to send it to correct place
+      erb :'answer/new'
   end
 end
 
@@ -64,5 +65,12 @@ get '/answers/:id/delete' do
     redirect "/questions/#{@answer.question_id}"
 end
 
-
-
+put '/answer_chosen/:answer_id' do
+  answer = Answer.find_by(id: params[:answer_id])
+  answer.answer_chosen = params[:answer_chosen] if answer
+  if answer.save
+    redirect request.referer
+  else
+    "Display error of already picked a best answer"
+  end
+end
